@@ -1,0 +1,25 @@
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  width: 100%;
+}
+
+.user-details {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.user-details > img {
+  height: auto;
+  width: 150px;
+}
+
+.user-details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}

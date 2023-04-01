@@ -1,44 +1,29 @@
 import ReactModal from "react-modal";
-import { useQuery } from "@tanstack/react-query";
 import "./style.css";
-import { getUsers } from "../../api";
+import { Content } from "./Content";
 
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
+    backgroundColor: "#CDCDCD",
     bottom: "auto",
+    display: "flex",
+    flexDirection: "column",
+    left: "50%",
     marginRight: "-50%",
+    maxWidth: "800px",
+    minWidth: "300px",
+    overflow: "visibile",
+    right: "auto",
+    top: "50%",
     transform: "translate(-50%, -50%)",
+    padding: "20px 30px",
   },
   overlay: {
     backgroundColor: "transparent",
   },
 };
 
-export const Modal = ({ isOpen, setIsOpen, data, isLoading, isError }) => {
-  const renderContent = () => {
-    if (isLoading) {
-      return <span>Loading...</span>;
-    }
-
-    if (isError) {
-      return <span>Error: {error.message}</span>;
-    }
-
-    // We can assume by this point that `isSuccess === true`
-    return (
-      <ul>
-        {data.map((user) => (
-          <li key={user.id}>
-            {user.first_name} {user.last_name}
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
+export const Modal = ({ isOpen, setIsOpen }) => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -46,9 +31,13 @@ export const Modal = ({ isOpen, setIsOpen, data, isLoading, isError }) => {
       style={customStyles}
       appElement={document.getElementById("app")}
     >
-      <h2>Hello</h2>
-      <button onClick={() => setIsOpen(false)}>close</button>
-      {renderContent()}
+      <div className="modal-header">
+        <h2>Users</h2>
+        <button className="close-button" onClick={() => setIsOpen(false)}>
+          &times;
+        </button>
+      </div>
+      <Content />
     </ReactModal>
   );
 };

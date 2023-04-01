@@ -1,0 +1,14 @@
+.toggle-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.button-user {
+  flex: 1;
+  background-color: #969696;
+}
+
+.button-user-selected {
+  flex: 1;
+  background-color: #03b309;
+}

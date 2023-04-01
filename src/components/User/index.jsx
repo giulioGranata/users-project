@@ -22,7 +22,7 @@ export const User = ({ selectedUser }) => {
           </div>
         </div>
       ) : (
-        <i>Please Select An User</i>
+        <i>No user selected</i>
       )}
     </div>
   );

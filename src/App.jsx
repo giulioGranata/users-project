@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { useQuery } from "@tanstack/react-query";
+import { Modal } from "./components/Modal";
+import { getUsers } from "./api";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [firstOpening, setFirstOpening] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { isLoading, isError, data, error, refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: () => getUsers(10),
+    enabled: false,
+  });
+
+  const handleClick = () => {
+    firstOpening && (setFirstOpening(false), refetch());
+    setIsOpen(true);
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+    <div id="app">
+      <h1>Users Project</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => handleClick()}>Open Modal</button>
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          data={data}
+          isError={isError}
+          isLoading={isLoading}
+          refetchData={refetch}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

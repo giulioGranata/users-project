@@ -7,7 +7,7 @@ export const User = ({ selectedUser }) => {
     <div className="user-container">
       {selectedUser ? (
         <div className="user-details">
-          <img src={avatar} />
+          <img src={avatar} key={avatar} />
           <div className="user-details-info">
             <div>
               <i>fullname: </i>

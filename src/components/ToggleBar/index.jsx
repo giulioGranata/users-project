@@ -38,14 +38,12 @@ export const ToggleBar = ({ selectedUser, setSelectedUser }) => {
 
   return (
     <div>
-      {rowData.map((data, dataI) => (
-        <div className="toggle-bar-row" key={dataI}>
-          {data.map((user, i) => (
+      {rowData.map((row, rowI) => (
+        <div className="toggle-bar-row" key={rowI}>
+          {row.map((user, userI) => (
             <button
-              key={i}
-              className={`button-user${
-                selectedUser?.id === user.id ? "-selected" : ""
-              }`}
+              key={userI}
+              className={selectedUser?.id === user.id ? "selected" : ""}
               onClick={() =>
                 setSelectedUser(selectedUser?.id === user.id ? null : user)
               }

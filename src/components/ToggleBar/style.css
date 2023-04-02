@@ -1,19 +1,26 @@
-.toggle-bar {
-  display: flex;
-  flex-direction: column;
-}
-
 .toggle-bar-row {
   display: inline-flex;
+  height: 55px;
   width: 100%;
 }
 
-.button-user {
-  flex: 1;
+.toggle-bar-row > button {
+  flex: 0 0 20%;
   background-color: #969696;
+  border-radius: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #696969;
 }
 
-.button-user-selected {
-  flex: 1;
-  background-color: #03b309;
+.toggle-bar-row > button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.toggle-bar-row > button:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.selected {
+  background-color: #03b309 !important;
 }

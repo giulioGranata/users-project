@@ -18,7 +18,6 @@ export const User = ({ selectedUser }) => {
             <div>
               <i>email: </i> <b>{email}</b>
             </div>
-            <div></div>
           </div>
         </div>
       ) : (

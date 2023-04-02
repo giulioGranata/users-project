@@ -1,13 +1,18 @@
 import "./style.css";
-import { useGetUsers } from "../../hooks";
 import { ToggleBar } from "../ToggleBar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { User } from "../User";
+import { useQuery } from "@tanstack/react-query";
+import { getUsers } from "../../api";
 
 export const Content = ({ firstOpening, setFirstOpening }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [usersToGet, setUsersToGet] = useState(20);
-  const { isLoading, isError, error, refetch } = useGetUsers(usersToGet);
+  const { isLoading, isError, data, error, refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: () => getUsers(usersToGet),
+    enabled: false,
+  });
 
   useEffect(() => {
     if (firstOpening) {
@@ -34,6 +39,7 @@ export const Content = ({ firstOpening, setFirstOpening }) => {
     return (
       <>
         <ToggleBar
+          apiData={data}
           selectedUser={selectedUser}
           setSelectedUser={setSelectedUser}
         />

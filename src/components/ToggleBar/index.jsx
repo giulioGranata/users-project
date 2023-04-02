@@ -4,9 +4,8 @@ import { splitArrayIntoChunks } from "../../utils";
 
 import "./style.css";
 
-export const ToggleBar = ({ selectedUser, setSelectedUser }) => {
+export const ToggleBar = ({ apiData, selectedUser, setSelectedUser }) => {
   const [rowData, setRowData] = useState([]);
-  const { data: apiData } = useGetUsers();
 
   useEffect(() => {
     const maxRowSize = 5;

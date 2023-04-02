@@ -1,6 +1,11 @@
 .toggle-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-bar-row {
   display: inline-flex;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .button-user {

@@ -23,7 +23,7 @@ const customStyles = {
   },
 };
 
-export const Modal = ({ isOpen, setIsOpen }) => {
+export const Modal = ({ isOpen, setIsOpen, firstOpening, setFirstOpening }) => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -37,7 +37,7 @@ export const Modal = ({ isOpen, setIsOpen }) => {
           &times;
         </button>
       </div>
-      <Content />
+      <Content firstOpening={firstOpening} setFirstOpening={setFirstOpening} />
     </ReactModal>
   );
 };

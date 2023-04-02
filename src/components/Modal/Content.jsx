@@ -1,19 +1,25 @@
 import "./style.css";
 import { useGetUsers } from "../../hooks";
 import { ToggleBar } from "../ToggleBar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { User } from "../User";
 
-export const Content = () => {
-  const { isLoading, isError, error, refetch } = useGetUsers();
+export const Content = ({ firstOpening, setFirstOpening }) => {
   const [selectedUser, setSelectedUser] = useState(null);
-  const inputRef = useRef(10);
+  const [usersToGet, setUsersToGet] = useState(20);
+  const { isLoading, isError, error, refetch } = useGetUsers(usersToGet);
+
+  useEffect(() => {
+    if (firstOpening) {
+      setFirstOpening(false);
+      refetch();
+    }
+  }, []);
 
   const handleClick = () => {
-    const inputValue = inputRef.current?.value;
-    if (inputValue && inputValue > 20)
+    if (usersToGet && usersToGet > 20)
       return alert("ERROR: You cannot request more than 20 user.");
-    refetch(inputValue), setSelectedUser(null);
+    refetch(), setSelectedUser(null);
   };
 
   const render = () => {
@@ -35,7 +41,11 @@ export const Content = () => {
 
         <div className="refetch">
           <i>Users to get:</i>
-          <input ref={inputRef} type="number" />
+          <input
+            onChange={(e) => setUsersToGet(e.target.value)}
+            type="number"
+            value={usersToGet}
+          />
           <button onClick={() => handleClick()}>Get Other Users</button>
         </div>
       </>

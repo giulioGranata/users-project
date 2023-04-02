@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useGetUsers } from "../../hooks";
 import { splitArrayIntoChunks } from "../../utils";
 
 import "./style.css";

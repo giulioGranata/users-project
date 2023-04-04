@@ -82,7 +82,6 @@ export const Modal = ({ isOpen, setIsOpen, firstOpening, setFirstOpening }) => {
   return (
     <ReactModal
       isOpen={isOpen}
-      onRequestClose={() => setIsOpen(false)}
       style={customStyles}
       appElement={document.getElementById("app")}
     >

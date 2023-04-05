@@ -1,0 +1,42 @@
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.close-button {
+  background-color: transparent;
+  color: black;
+  width: fit-content;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  gap: 30px;
+}
+
+.refetch {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
